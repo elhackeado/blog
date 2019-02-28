@@ -20,47 +20,31 @@
 
     <style>
     	
-    	:root {
+    :root {
   --input-padding-x: 1.5rem;
-  --input-padding-y: .75rem;
+  --input-padding-y: 0.75rem;
 }
 
-
-.card-signin {
-  border: 0;
-  border-radius: 1rem;
-  box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
-  overflow: hidden;
+.login,
+.image {
+  min-height: 100vh;
 }
 
-.card-signin .card-title {
-  margin-bottom: 2rem;
-  font-weight: 300;
-  font-size: 1.5rem;
-}
-
-.card-signin .card-img-left {
-  width: 45%;
-  /* Link to your background image using in the property below! */
-  background: scroll center url('https://source.unsplash.com/WEQbe2jBg40/414x512');
+.bg-image {
+  background-image: url('https://source.unsplash.com/WEQbe2jBg40/600x1200');
   background-size: cover;
+  background-position: center;
 }
 
-.card-signin .card-body {
-  padding: 2rem;
+.login-heading {
+  font-weight: 300;
 }
 
-.form-signin {
-  width: 100%;
-}
-
-.form-signin .btn {
-  font-size: 80%;
-  border-radius: 5rem;
-  letter-spacing: .1rem;
-  font-weight: bold;
-  padding: 1rem;
-  transition: all 0.2s;
+.btn-login {
+  font-size: 0.9rem;
+  letter-spacing: 0.05rem;
+  padding: 0.75rem 1rem;
+  border-radius: 2rem;
 }
 
 .form-label-group {
@@ -68,14 +52,11 @@
   margin-bottom: 1rem;
 }
 
-.form-label-group input {
-  height: auto;
-  border-radius: 2rem;
-}
-
 .form-label-group>input,
 .form-label-group>label {
   padding: var(--input-padding-y) var(--input-padding-x);
+  height: auto;
+  border-radius: 2rem;
 }
 
 .form-label-group>label {
@@ -88,6 +69,8 @@
   /* Override default `<label>` margin */
   line-height: 1.5;
   color: #495057;
+  cursor: text;
+  /* Match the input under the label */
   border: 1px solid transparent;
   border-radius: .25rem;
   transition: all .1s ease-in-out;
@@ -156,7 +139,7 @@
           <div class="row pt-5">
             <div class="col-12 text-center">
               <a class="absolute-toggle d-block d-md-none" data-toggle="collapse" href="#navbarMenu" role="button" aria-expanded="false" aria-controls="navbarMenu"><span class="burger-lines"></span></a>
-              <h1 class="site-logo"><a href="index.html">Wordify</a></h1>
+              <h1 class="site-logo"><a href="index.html">Diy.Entrepreneur</a></h1>
             </div>
           </div>
         </div>
@@ -168,39 +151,7 @@
             <div class="collapse navbar-collapse" id="navbarMenu">
               <ul class="navbar-nav mx-auto">
                 <li class="nav-item">
-                  <a class="nav-link active" href="index.html">Home</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Business</a>
-                </li>
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="category.html" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Travel</a>
-                  <div class="dropdown-menu" aria-labelledby="dropdown04">
-                    <a class="dropdown-item" href="category.html">Asia</a>
-                    <a class="dropdown-item" href="category.html">Europe</a>
-                    <a class="dropdown-item" href="category.html">Dubai</a>
-                    <a class="dropdown-item" href="category.html">Africa</a>
-                    <a class="dropdown-item" href="category.html">South America</a>
-                  </div>
-
-                </li>
-
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="category.html" id="dropdown05" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categories</a>
-                  <div class="dropdown-menu" aria-labelledby="dropdown05">
-                    <a class="dropdown-item" href="category.html">Lifestyle</a>
-                    <a class="dropdown-item" href="category.html">Food</a>
-                    <a class="dropdown-item" href="category.html">Adventure</a>
-                    <a class="dropdown-item" href="category.html">Travel</a>
-                    <a class="dropdown-item" href="category.html">Business</a>
-                  </div>
-
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="about.html">About</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="contact.html">Contact</a>
+                  <a class="nav-link" href="index.html">Home</a>
                 </li>
               </ul>
               
@@ -214,47 +165,147 @@
 
 
 
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-10 col-xl-9 mx-auto">
-        <div class="card card-signin flex-row my-5">
-          <div class="card-img-left d-none d-md-flex">
-             <!-- Background image for card set in CSS! -->
-          </div>
-          <div class="card-body">
-            <h5 class="card-title text-center">Register</h5>
-            <form class="form-signin">
-              <div class="form-label-group">
-                <input type="text" id="inputUserame" class="form-control" placeholder="Username" required autofocus>
-                <label for="inputUserame">Username</label>
-              </div>
+  <div class="container-fluid">
+  <div class="row no-gutter">
+    <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image"></div>
+    <div class="col-md-8 col-lg-6">
+      <div class="login d-flex align-items-center py-5">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-9 col-lg-8 mx-auto">
+              <h3 class="login-heading mb-4">Welcome back!</h3>
+              <form>
+                <div class="form-label-group">
+                  <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+                  <label for="inputEmail">Email address</label>
+                </div>
 
-              <div class="form-label-group">
-                <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required>
-                <label for="inputEmail">Email address</label>
-              </div>
-              
-              <hr>
+                <div class="form-label-group">
+                  <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                  <label for="inputPassword">Password</label>
+                </div>
 
-              <div class="form-label-group">
-                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-                <label for="inputPassword">Password</label>
-              </div>
-              
-              <div class="form-label-group">
-                <input type="password" id="inputConfirmPassword" class="form-control" placeholder="Password" required>
-                <label for="inputConfirmPassword">Confirm password</label>
-              </div>
-
-              <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Register</button>
-              <a class="d-block text-center mt-2 small" href="#">Sign In</a>
-              <hr class="my-4">
-              
-            </form>
+                <div class="custom-control custom-checkbox mb-3">
+                  <input type="checkbox" class="custom-control-input" id="customCheck1">
+                  <label class="custom-control-label" for="customCheck1">Remember password</label>
+                </div>
+                <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit">Log In</button>
+                <div class="text-center">
+                  <a class="small" href="#">Forgot password?</a></div>
+                <div class="text-center">
+                  <a class="small" href="user_register.html">Register</a></div>
+              </form>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+</div>
+
+
+
+
+  <footer class="site-footer">
+        <div class="container">
+          <div class="row mb-5">
+            <div class="col-md-4">
+              <h3>About Us</h3>
+              <p class="mb-4">
+                <img src="images/img_1.jpg" alt="Image placeholder" class="img-fluid">
+              </p>
+
+              <p>Lorem ipsum dolor sit amet sa ksal sk sa, consectetur adipisicing elit. Ipsa harum inventore reiciendis. <a href="#">Read More</a></p>
+            </div>
+            <div class="col-md-6 ml-auto">
+              <div class="row">
+                <div class="col-md-7">
+                  <h3>Latest Post</h3>
+                  <div class="post-entry-sidebar">
+                    <ul>
+                      <li>
+                        
+                        <a href="">
+                          <img src="images/img_3.jpg" alt="Image placeholder" class="mr-4">
+                          <div class="text">
+                            <h4>How to Find the Video Games of Your Youth</h4>
+                            <div class="post-meta">
+                              <span class="mr-2">March 15, 2018 </span> &bullet;
+                              <span class="ml-2"><span class="fa fa-comments"></span> 3</span>
+                            </div>
+                          </div>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="">
+                          <img src="images/img_4.jpg" alt="Image placeholder" class="mr-4">
+                          <div class="text">
+                            <h4>How to Find the Video Games of Your Youth</h4>
+                            <div class="post-meta">
+                              <span class="mr-2">March 15, 2018 </span> &bullet;
+                              <span class="ml-2"><span class="fa fa-comments"></span> 3</span>
+                            </div>
+                          </div>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="col-md-1"></div>
+                
+                <div class="col-md-4">
+
+                  <div class="mb-5">
+                    <h3>Quick Links</h3>
+                    <ul class="list-unstyled">
+                      <li><a href="#">About Us</a></li>
+                      <li><a href="#">Contact</a></li>
+                     
+                    </ul>
+                  </div>
+                  
+                  <div class="mb-5">
+                    <h3>Social</h3>
+                    <ul class="list-unstyled footer-social">
+                      <li><a href="#"><span class="fa fa-twitter"></span> Twitter</a></li>
+                      <li><a href="#"><span class="fa fa-facebook"></span> Facebook</a></li>
+                      <li><a href="#"><span class="fa fa-instagram"></span> Instagram</a></li>
+                      <li><a href="#"><span class="fa fa-vimeo"></span> Vimeo</a></li>
+                      <li><a href="#"><span class="fa fa-youtube-play"></span> Youtube</a></li>
+                      <li><a href="#"><span class="fa fa-snapchat"></span> Snapshot</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12 text-center">
+              <p class="small">
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            Copyright &copy; <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>document.write(new Date().getFullYear());</script> All Rights Reserved | Developed By ProjectusCreativity.ml<a href="#" target="_blank" ></a>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+      <!-- END footer -->
+
+    </div>
+    
+    <!-- loader -->
+    <div id="loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#f4b214"/></svg></div>
+
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/jquery-migrate-3.0.0.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/jquery.waypoints.min.js"></script>
+    <script src="js/jquery.stellar.min.js"></script>
+
+    
+    <script src="js/main.js"></script>
 </body>
 </html>
