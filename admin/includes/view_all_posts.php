@@ -19,7 +19,7 @@ if(isset($_SESSION['user_role'])){
               }
             
             </style>
-		   <?php include "delete_modal.php"; ?>
+		   
            <form action="" method="post">
             <div id="BulkOptionContainer" class="col-md-4">
                     <select class="form-control" name="bulk_options" id="">
@@ -98,7 +98,8 @@ if(isset($_SESSION['user_role'])){
                                     echo "<td>$post_date</td>";
                                     echo "<td>$post_content</td>";
  
-                                    echo "<td><a href='javascript:void(0)' data-href='posts.php?delete=$post_id' data-toggle='modal' data-target='#myModal' class='btn btn-danger'>Delete</a></td>";
+                                    
+                                    echo "<td><a class='btn btn-danger' href='posts.php?delete=$post_id'>Delete</a></td>";
                                   //  echo "<td><a rel='$post_id' href='javascript:void(0)' class='btn btn-danger delete_link'>Delete</a></td>";
 //                                    echo "<td><a onClick=\"javascript: return confirm('Are you sure?') \" class='btn btn-danger' href='posts.php?delete=$post_id'>Delete</a></td>";
                                     echo "<td><a class='btn btn-primary' href='posts.php?source=edit_posts&update=$post_id'>Update</a></td>";

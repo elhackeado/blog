@@ -2,7 +2,7 @@
 if(isset($_SESSION['user_role'])){
     if($_SESSION['user_role'] == "Admin"){
 ?>
-<?php include "delete_modal.php"; ?>
+
 <table class="table table-hover">
                             <thead>
                                 <tr>
@@ -44,7 +44,7 @@ if(isset($_SESSION['user_role'])){
                                     echo "<td>$user_lastname</td>";
                                     echo "<td>$user_email</td>";
                                     echo "<td>$user_role</td>";
-                                    echo "<td><a href='javascript:void(0)' data-href='users.php?delete=$user_id' data-toggle='modal' data-target='#myModal' class='btn btn-danger'>Delete</a></td>";
+                                    echo "<td><a class='btn btn-danger' href='users.php?delete=$user_id'>Delete</a></td>";
                                     echo "<td><a class='btn btn-success' href='users.php?change_to_admin=$user_id'>Admin</a></td>";
                                     echo "<td><a class='btn btn-warning' href='users.php?change_to_subscriber=$user_id'>Subscriber</a></td>";
                                     echo "<td><a class='btn btn-primary' href='./users.php?source=edit_user&edit_id=$user_id'>Edit</a></td>";
@@ -57,6 +57,7 @@ if(isset($_SESSION['user_role'])){
                                  if(isset($_GET['change_to_admin'])){
                                     
                                     change_to_admin();
+
                                 }
                                 
                                  if(isset($_GET['change_to_subscriber'])){
@@ -66,20 +67,12 @@ if(isset($_SESSION['user_role'])){
                                 if(isset($_GET['delete'])){
                                     
                                     delete_users();
-                                }
+                                    }
                                 
                                 ?> 
                                   </tbody>
                         </table>
-<script>
 
-  $('#myModal').on('show.bs.modal', function (e) {
-	
-    	$(this).find('.modal_delete_link').attr('href', $(e.relatedTarget).data('href'));
-
-});
-
-</script>
 
 
 <?php

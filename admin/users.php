@@ -1,5 +1,5 @@
 <?php include"includes/admin_header.php"; ?>
-<?php include"includes/delete_modal.php"; ?>
+
     <div id="wrapper">
 
         <!-- Navigation -->
@@ -16,7 +16,7 @@
                     <div class="col-lg-12">
                         <h1 class="page-header">
                             Welcome to the Admin,
-                            <small><?php echo $_SESSION['username']; ?></small>
+                            <small><?php echo $_SESSION['user_firstname']; ?></small>
                         </h1>
                         <ol class="breadcrumb">
                             <li>

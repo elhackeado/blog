@@ -8,7 +8,11 @@ $cat_id = $row['cat_id'];
 $cat_title = $row['cat_title'];
 
 echo "<tr><td>{$cat_id}</td><td>{$cat_title}</td>
-<td><a class='btn btn-danger' data-toggle='modal' data-target='#myModal' data-href='categories.php?delete=$cat_id' href='javascript:void(0)'>Delete</a> <a class='btn btn-primary' href='categories.php?update={$cat_id}'>Update</a></td></tr>";
+<td>
+<a class='btn btn-danger' href='categories.php?delete=$cat_id'>Delete</a> 
+<a class='btn btn-primary' href='categories.php?update={$cat_id}'>Update</a>
+</td>
+</tr>";
 }
 
 ?>

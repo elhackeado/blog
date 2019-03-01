@@ -1,0 +1,20 @@
+<?php
+if(isset($_POST['delete_user'])){
+    
+
+    
+    $user_email = $_POST['user_email'];
+
+    
+    $query = "delete from users where uesr_email=$user_email";
+    
+    
+    
+    $delete_user = mysqli_query($connection,$query);
+    
+    confirm_query($delete_user);
+    echo "<h5 class='well col-md-7'>User Deleted!</h5>";
+    }
+    
+
+?>

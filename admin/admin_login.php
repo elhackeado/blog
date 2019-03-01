@@ -157,14 +157,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
             <h5 class="card-title text-center">Admin Login</h5>
             <form action="admin_login.php" method="post" class="form-signin">
               <div class="form-label-group">
-                <input type="email" id="email" name="email" class="form-control" placeholder="Email address" required>
-                <label for="email">Email address</label>
+                <input type="email" id="user_email" name="user_email" class="form-control" placeholder="Email address" required>
+                <label for="user_email">Email address</label>
               </div>
             
 
               <div class="form-label-group">
-                <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>
-                <label for="inputPassword">Password</label>
+                <input type="password" id="user_password" name="user_password" class="form-control" placeholder="Password" required>
+                <label for="user_password">Password</label>
               </div>
               
 

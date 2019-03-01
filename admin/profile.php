@@ -19,7 +19,7 @@ if(isset($_SESSION['username'])){
     
     if(isset($_POST['update_profile'])){
     $username = $_SESSION['username'];
-    $user_password = $_POST['user_password'];
+    $user_password = password_hash($_POST['user_password'], PASSWORD_BCRYPT,array('cost' => 10));
     $user_firstname = $_POST['user_firstname'];
     $user_lastname = $_POST['user_lastname'];
     
