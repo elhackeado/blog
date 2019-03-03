@@ -1,3 +1,4 @@
+<?php include 'includes/database.php'; ?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -248,44 +249,7 @@
       </div>
     </section>
   
-    <footer class="site-footer">
-        <div class="container">
-          
-            <div class="col-md-6 ml-auto">
-              <div class="row">
-                
-                <div class="col-md-1"></div>
-                
-                <div class="col-md-4">
-
-                
-                  
-                  <div class="mb-5">
-                    <h3>Social</h3>
-                    <ul class="list-unstyled footer-social">
-                      <li><a href="#"><span class="fa fa-twitter"></span> Twitter</a></li>
-                      <li><a href="#"><span class="fa fa-facebook"></span> Facebook</a></li>
-                      <li><a href="#"><span class="fa fa-instagram"></span> Instagram</a></li>
-                      <li><a href="#"><span class="fa fa-vimeo"></span> Vimeo</a></li>
-                      <li><a href="#"><span class="fa fa-youtube-play"></span> Youtube</a></li>
-                      <li><a href="#"><span class="fa fa-snapchat"></span> Snapshot</a></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-12 text-center">
-              <p class="small">
-            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-            Copyright &copy; <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>document.write(new Date().getFullYear());</script> All Rights Reserved | Developed By Projectuscreativity.ml 
-            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-            </p>
-            </div>
-          </div>
-        
-      </footer>
+    <?php include 'user_footer.php'; ?>
       <!-- END footer -->
 
     </div>
