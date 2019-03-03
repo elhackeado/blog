@@ -1,4 +1,23 @@
 <?php include 'includes/database.php' ?>
+<?php include 'user_header.php' ?>
+<?php include 'user_navigation.php' ?>
+<?php  
+if(isset($_SESSION['user_role'])){
+    if($_SESSION['user_role'] == "Admin"){
+        
+        header("Location: admin/index.php");
+        
+    }
+    else if($_SESSION['user_role'] == "Subscriber"){
+        
+        header("Location: index.php");
+        
+    }
+       
+}
+
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -21,7 +40,7 @@
 
     <style>
     	
-    :root {
+:root {
   --input-padding-x: 1.5rem;
   --input-padding-y: 0.75rem;
 }
@@ -113,10 +132,9 @@
     </style>
   </head>
   <body>
-<div class="wrap">
 
-      <?php include 'user_header.php' ?>
 
+      
 
 
 
@@ -166,7 +184,7 @@
   <?php include 'user_footer.php' ?>
       <!-- END footer -->
 
-    </div>
+
     
     <!-- loader -->
     <div id="loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#f4b214"/></svg></div>

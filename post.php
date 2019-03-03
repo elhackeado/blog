@@ -11,32 +11,8 @@
                 } ?>
 
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <title>Colorlib Wordify &mdash; Minimal Blog Template</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300, 400,700|Inconsolata:400,700" rel="stylesheet">
-
-    <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" href="css/animate.css">
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-
-    <link rel="stylesheet" href="fonts/ionicons/css/ionicons.min.css">
-    <link rel="stylesheet" href="fonts/fontawesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
-
-    <!-- Theme Style -->
-    <link rel="stylesheet" href="css/style.css">
-  </head>
-  <body>
-    
-
-    <div class="wrap">
-
-      <?php include "user_header.php"; ?>
+<?php include "user_header.php"; ?>
+<?php include "user_navigation.php"; ?>
       
 
     <section class="site-section py-lg">
@@ -159,32 +135,66 @@
               </ul>
               <!-- END comment-list -->
               
+
+              <?php if(!isset($_SESSION['user_role'])){ ?> 
+                        <div class="row">
+            
+            <div class="pt-5">
+              <p>
+            
+            To leave a comment please <a href="user_login.php">Log In</a>
+            </p>
+            </div>
+          
+          </div>
+                    <?php }else{ ?>
+                    
+                   <?php
+                
+                if(isset($_POST['add_comment'])){
+                        $comment_post_id = $current_post_id;
+                        $comment_author = $_SESSION['username'];
+                        $comment_email = $_SESSION['user_email'];
+                        $comment_content = $_POST['comment_content'];
+                        $comment_date = date('d-m-y');
+
+                        if(!empty($comment_author) && !empty($comment_email) && !empty($comment_content)){
+                             $query = "INSERT INTO comments(comment_post_id ,comment_author ,comment_email, comment_content, comment_date) values($comment_post_id,'$comment_author','$comment_email','$comment_content',now() )";
+
+                            $add_comment = mysqli_query($connection, $query);
+
+                            confirm_query($add_comment);
+                                $success = "Succesfully Commented!";
+                        }
+                        else{
+                            $error = "All fields are requried!";
+                        }
+                } 
+                ?>
+
+
+
+
+
               <div class="comment-form-wrap pt-5">
                 <h3 class="mb-5">Leave a comment</h3>
-                <form action="#" class="p-5 bg-light">
-                  <div class="form-group">
-                    <label for="name">Name *</label>
-                    <input type="text" class="form-control" id="name">
-                  </div>
-                  <div class="form-group">
-                    <label for="email">Email *</label>
-                    <input type="email" class="form-control" id="email">
-                  </div>
-                  <div class="form-group">
-                    <label for="website">Website</label>
-                    <input type="url" class="form-control" id="website">
-                  </div>
-
+                <form role="form" action="" method="post" class="p-5 bg-light">
+                  
                   <div class="form-group">
                     <label for="message">Message</label>
-                    <textarea name="" id="message" cols="30" rows="10" class="form-control"></textarea>
+                    <textarea id="comment_content" name="comment_content" cols="30" rows="5" class="form-control"></textarea>
                   </div>
                   <div class="form-group">
-                    <input type="submit" value="Post Comment" class="btn btn-primary">
+                    
+                    <button type="submit" class="btn btn-primary" name="add_comment">Add Comment</button>
                   </div>
 
                 </form>
               </div>
+            
+                <?php } ?>
+
+
             </div>
 
           </div>
@@ -256,7 +266,7 @@
     
     <?php include "user_footer.php"; ?>
 
-    </div>
+    
     
     <!-- loader -->
     <div id="loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#f4b214"/></svg></div>

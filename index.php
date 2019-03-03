@@ -1,34 +1,6 @@
 <?php include "includes/database.php"; ?>
-
-
-
-
-<!doctype html>
-<html lang="en">
-  <head>
-    <title>DIY.Entrepreneur &mdash; Minimal Blog </title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300, 400,700|Inconsolata:400,700" rel="stylesheet">
-
-    <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" href="css/animate.css">
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-
-    <link rel="stylesheet" href="fonts/ionicons/css/ionicons.min.css">
-    <link rel="stylesheet" href="fonts/fontawesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
-
-    <!-- Theme Style -->
-    <link rel="stylesheet" href="css/style.css">
-  </head>
-  <body>
-    
-
-    <div class="wrap">
-
-      <?php include "user_header.php"; ?>
+<?php include "user_header.php"; ?>
+<?php include "user_navigation.php"; ?>
       
       <section class="site-section pt-5 pb-5">
         <div class="container">
@@ -74,7 +46,7 @@
                       <span class="category mb-5">Food</span>
                       <div class="post-meta">
                         
-                        <span class="author mr-2"><img src="admin/images/<?php echo $admin_image; ?>" alt="Colorlib"> <?php echo $post_author; ?></span>&bullet;
+                        <span class="author mr-2"><img src="admin/images/<?php echo $admin_image; ?>" alt="placeholder"> <?php echo $post_author; ?></span>&bullet;
                         <span class="mr-2"><?php echo $post_date; ?> </span> &bullet;
                         <span class="ml-2"><span class="fa fa-comments"></span> <?php echo $post_views; ?></span>
                         
@@ -149,7 +121,7 @@
                     <img src="images/<?php echo $post_image; ?>" alt="Image placeholder">
                     <div class="blog-content-body">
                       <div class="post-meta">
-                        <span class="author mr-2"><img src="admin/images/<?php echo $admin_image; ?>" alt="Colorlib"> <?php echo $post_author; ?></span>&bullet;
+                        <span class="author mr-2"><img src="admin/images/<?php echo $admin_image; ?>" alt="placeholder"> <?php echo $post_author; ?></span>&bullet;
                         <span class="mr-2"><?php echo $post_date; ?> </span> &bullet;
                         <span class="ml-2"><span class="fa fa-comments"></span> <?php echo $post_views; ?></span>
                       </div>
