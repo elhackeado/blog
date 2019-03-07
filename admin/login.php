@@ -3,7 +3,7 @@
 
 // Escape email to protect against SQL injections
 $user_email = $mysqli->escape_string($_POST['user_email']);
-$result = $mysqli->query("SELECT * FROM users WHERE user_email='$user_email'");
+$result = $mysqli->query("SELECT * FROM users WHERE user_email='$user_email' AND user_role='Admin'");
 
 if ( $result->num_rows == 0 ){ // User doesn't exist
     $_SESSION['message'] = "User with that email doesn't exist!";

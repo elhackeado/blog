@@ -63,10 +63,10 @@
              <div class="post-meta">
                         <span class="author mr-2"><img src="admin/images/<?php echo $admin_image; ?>" alt="Colorlib" class="mr-2"> <?php echo $post_author; ?></span>&bullet;
                         <span class="mr-2"><?php echo $post_date; ?> </span> &bullet;
-                        <span class="ml-2"><span class="fa fa-comments"></span><?php echo $post_views; ?></span>
+                        <span class="ml-2"><span class="fa fa-eye"></span><?php echo $post_views; ?></span>
                       </div>
             <h1 class="mb-4"><?php echo $post_title; ?></h1>
-            <a class="category mb-5" href="#"><?php echo $current_post_title ?> </a> 
+            <a class="category mb-5" href="category.php?cat_id=<?php echo $current_post_category_id ?>"><?php echo $current_post_title ?> </a> 
            
             <div class="post-content-body">
               
@@ -77,7 +77,7 @@
 
             
             <div class="pt-5">
-              <p>Categories:  <a href="#">Food</a>, <a href="#">Travel</a>  Tags: <a href="#">#manila</a>, <a href="#">#asia</a></p>
+              <p>Category:  <a href="category.php?cat_id=<?php echo $current_post_category_id ?>"><?php echo $current_post_title ?></a></p>
             </div>
 
             <?php } 
@@ -106,6 +106,7 @@
                         $comment_author = $row['comment_author'];
                         $comment_email = $row['comment_email'];
                         $comment_content = $row['comment_content'];
+
                         $comment_date = $row['comment_date'];
                         $comment_date = date('F d, Y', strtotime($comment_date));
 
@@ -137,7 +138,7 @@
               
 
               <?php if(!isset($_SESSION['user_role'])){ ?> 
-                        <div class="row">
+                        <div>
             
             <div class="pt-5">
               <p>
@@ -156,6 +157,7 @@
                         $comment_author = $_SESSION['username'];
                         $comment_email = $_SESSION['user_email'];
                         $comment_content = $_POST['comment_content'];
+                        $comment_content = mysqli_real_escape_string($connection, $comment_content);
                         $comment_date = date('d-m-y');
 
                         if(!empty($comment_author) && !empty($comment_email) && !empty($comment_content)){
@@ -164,7 +166,7 @@
                             $add_comment = mysqli_query($connection, $query);
 
                             confirm_query($add_comment);
-                                $success = "Succesfully Commented!";
+                                $success = "Comment sent for Admin approval !";
                         }
                         else{
                             $error = "All fields are requried!";
@@ -188,6 +190,19 @@
                     
                     <button type="submit" class="btn btn-primary" name="add_comment">Add Comment</button>
                   </div>
+                  <?php 
+                  
+                    if(isset($success)){
+                         
+                        if($success=='Comment sent for Admin approval !'){
+                           ?> <div class="alert alert-success" role="alert">
+                                Comment sent for Admin approval !
+                            </div> <?php
+                        }
+                    unset($success);
+              
+                    }
+                     ?>
 
                 </form>
               </div>
@@ -243,7 +258,7 @@
                 <div class="post-meta">
                   <span class="category"><?php echo $current_post_title ?></span>
                   <span class="mr-2"><?php echo $post_date; ?> </span> &bullet;
-                  <span class="ml-2"><span class="fa fa-comments"></span> <?php echo $post_views; ?></span>
+                  <span class="ml-2"><span class="fa fa-eye"></span> <?php echo $post_views; ?></span>
                 </div>
                 <h3><?php echo $post_title; ?></h3>
               </div>

@@ -1,24 +1,32 @@
 <?php
     
-    if(isset($_POST['add_post'])){
+    if(isset($_POST['add_post'])) {
+
+        if(isset($_POST['title']) && !empty($_POST['title'])) {
+            $post_title = $_POST['title'];
+        }
+        if(isset($_POST['post_content']) && !empty($_POST['post_content'])) {
+            $post_content = $_POST['post_content'];
+        }
     
+    if(isset($_POST['title']) && !empty($_POST['title']) && isset($_POST['post_content']) && !empty($_POST['post_content']) && !empty($_FILES['post_image']['name'])) {
     $post_title = $_POST['title'];
+    $post_title = mysqli_real_escape_string($connection, $post_title);
     $post_category_id = $_POST['post_category_id'];
     $post_author = $_SESSION['username'];
     $post_status = $_POST['post_status'];
     
-    $post_image = $_FILES['post_image']['name'];
+    $post_image = time().uniqid(rand()).$_FILES['post_image']['name'];
     $tmp_post_image = $_FILES['post_image']['tmp_name'];
-    
-    $post_tags = $_POST['post_tags'];
     $post_content = $_POST['post_content'];
+    $post_content = mysqli_real_escape_string($connection, $post_content);
     $post_date = date('d-m-y');
 
     move_uploaded_file($tmp_post_image, "../images/$post_image");
     
-    $query = "INSERT INTO posts(post_category_id,post_title,post_author,post_status,post_tags,post_content,post_date,post_image) ";
+    $query = "INSERT INTO posts(post_category_id,post_title,post_author,post_status,post_content,post_date,post_image) ";
     
-    $query .= "VALUES ($post_category_id,'$post_title','$post_author','$post_status','$post_tags','$post_content',now(),'$post_image')";
+    $query .= "VALUES ($post_category_id,'$post_title','$post_author','$post_status','$post_content',now(),'$post_image')";
     
     $create_post = mysqli_query($connection,$query);
     
@@ -26,6 +34,10 @@
     
     echo "<h5 class='well col-xs-6'>Post Created! '<a href='../post.php?post_id=$post_id'>  View Post </a>'</h5>";
     }
+    else{
+        $error = 'Post Title, Image and Content is mandatory !';
+    }
+}
     
 
 ?>
@@ -37,7 +49,7 @@
 
     <div class="form-group">
        <label for="title">Enter title</label>
-        <input type="text" class="form-control" name="title">
+        <input type="text" class="form-control" name="title" value="<?php if(isset($post_title)) echo $post_title ?>">
     </div>
     <div class="form-group">
        <label for="post_category_id">Post Category Title</label>
@@ -70,18 +82,28 @@
         <input type="file" name="post_image">
     </div>
     
-    <div class="form-group">
-       <label for="post_tags">Post Tags</label>
-        <input type="text" class="form-control" name="post_tags">
-    </div>
     
     <div class="form-group">
        <label for="post_content">Post Content</label>
-        <textarea class="form-control" name="post_content" id="" cols="30" rows="10"></textarea>
+        <textarea class="form-control" name="post_content" id="" cols="30" rows="10" value="<?php if(isset($post_content)) echo $post_content ?>"></textarea>
     </div>
     
     <div class="form-group">
         <input type="submit" value="Publish Post" class="btn btn-primary" name="add_post">
     </div>
+
+    <?php 
+                  
+                  if(isset($error)){
+                  
+                echo '<div class="alert alert-danger" role="alert">'.$error.'</div>';
+                
+              }
+              unset($error);
+              
+            
+              ?>
+
+
 </form>
 </div>

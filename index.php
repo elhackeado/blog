@@ -12,10 +12,7 @@
 
                 <?php 
                    
-                   $query="SELECT user_image FROM `users` WHERE user_role='Admin' ORDER BY user_id LIMIT 1";
-                    $get_image = mysqli_query($connection,$query);
-                    $row = mysqli_fetch_assoc($get_image);
-                    $admin_image = $row['user_image'];
+                   
 
 
                    $query = "SELECT * FROM `posts` WHERE post_status = 'Publish' ORDER BY post_views DESC LIMIT 3";
@@ -33,7 +30,21 @@
                     $post_image = $row['post_image'];
                     $post_content = $row['post_content'];
                     $post_content = substr($post_content, 0, 100);
+                    $post_category_id = $row['post_category_id'];
                     
+                    $queryy="SELECT user_image FROM `users` WHERE username='$post_author'";
+                    $get_image = mysqli_query($connection,$queryy);
+                    $roww = mysqli_fetch_assoc($get_image);
+                    $author_image = $roww['user_image'];
+
+                    $queryyy = "SELECT cat_title FROM Categories WHERE cat_id=$post_category_id";
+                    $get_category = mysqli_query($connection, $queryyy);
+                    $rowww = mysqli_fetch_assoc($get_category);
+                    $category_title = $rowww['cat_title'];
+
+
+
+
                     if ($post_image == ''){
                       $post_image = 'big_image_3.jpg';
                     }
@@ -43,12 +54,12 @@
                 <div>
                   <a href="post.php?post_id=<?php echo $post_id; ?>" class="a-block d-flex align-items-center height-lg" style="background-image: url('images/<?php echo $post_image; ?>'); ">
                     <div class="text half-to-full">
-                      <span class="category mb-5">Food</span>
+                      <span class="category mb-5"><?php echo $category_title; ?></span>
                       <div class="post-meta">
                         
-                        <span class="author mr-2"><img src="admin/images/<?php echo $admin_image; ?>" alt="placeholder"> <?php echo $post_author; ?></span>&bullet;
+                        <span class="author mr-2"><img src="admin/images/<?php echo $author_image; ?>" alt="placeholder"> <?php echo $post_author; ?></span>&bullet;
                         <span class="mr-2"><?php echo $post_date; ?> </span> &bullet;
-                        <span class="ml-2"><span class="fa fa-comments"></span> <?php echo $post_views; ?></span>
+                        <span class="ml-2"><span class="fa fa-eye"></span> <?php echo $post_views; ?></span>
                         
                       </div>
                       <h3><?php echo $post_title; ?></h3>
@@ -118,12 +129,12 @@
 
                 <div class="col-md-6">
                   <a href="post.php?post_id=<?php echo $post_id; ?>" class="blog-entry element-animate" data-animate-effect="fadeIn">
-                    <img src="images/<?php echo $post_image; ?>" alt="Image placeholder">
+                    <img src="images/<?php echo $post_image; ?>" alt="Image placeholder" height="250" width="400">
                     <div class="blog-content-body">
                       <div class="post-meta">
-                        <span class="author mr-2"><img src="admin/images/<?php echo $admin_image; ?>" alt="placeholder"> <?php echo $post_author; ?></span>&bullet;
+                        <span class="author mr-2"><img src="admin/images/<?php echo $author_image; ?>" alt="placeholder"> <?php echo $post_author; ?></span>&bullet;
                         <span class="mr-2"><?php echo $post_date; ?> </span> &bullet;
-                        <span class="ml-2"><span class="fa fa-comments"></span> <?php echo $post_views; ?></span>
+                        <span class="ml-2"><span class="fa fa-eye"></span> <?php echo $post_views; ?></span>
                       </div>
                       <h2><?php echo $post_title; ?></h2>
                     </div>
@@ -139,12 +150,12 @@
                         echo "<h1 class='text-center'>No Posts Found!</h1>";
                     }  
                 ?>
-
+                </div>
               <div class="row mt-5">
                 <div class="col-md-12 text-center">
                   <nav aria-label="Page navigation" class="text-center">
                     <ul class="pagination">
-                      <li class="page-item"><a class="page-link" href="#">&lt;</a></li>
+                      <li class="page-item"><a class="page-link" >&lt;</a></li>
                       
                       <?php
                 for($i =1;$i <= $post_count;$i++){
@@ -159,7 +170,7 @@
                 ?>
                       
                       
-                      <li class="page-item"><a class="page-link" href="#">&gt;</a></li>
+                      <li class="page-item"><a class="page-link" >&gt;</a></li>
                     </ul>
                   </nav>
                 </div>
@@ -168,7 +179,7 @@
 
               </div>
 
-              </div>
+              
 
             
 
@@ -184,7 +195,7 @@
     
 <?php include "user_footer.php"; ?>
 
-    </div>
+    
     
     <!-- loader -->
     <div id="loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#f4b214"/></svg></div>

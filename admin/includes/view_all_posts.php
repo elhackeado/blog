@@ -63,6 +63,7 @@ if(isset($_SESSION['user_role'])){
                                     $post_id = $row['post_id'];
                                     $post_author = $row['post_author'];
                                     $post_title = $row['post_title'];
+                                    $post_title = mysqli_real_escape_string($connection, $post_title);
                                     
                                     $query = "SELECT * FROM comments WHERE comment_post_id = $post_id";
                                     $get_comment_count = mysqli_query($connection,$query);
@@ -75,6 +76,7 @@ if(isset($_SESSION['user_role'])){
                                     $post_date = $row['post_date'];
                                     $post_views = $row['post_views'];
                                     $post_content = substr($row['post_content'],0,150);
+                                    $post_content = mysqli_real_escape_string($connection, $post_content);
                                     
                                     $query = "SELECT * FROM categories WHERE cat_id = $post_category_id ";
                                     $get_categories = mysqli_query($connection,$query);

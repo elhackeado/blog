@@ -14,7 +14,7 @@
                 <div class="bio-body">
                   <h2>Craig David</h2>
                   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem facilis sunt repellendus excepturi beatae porro debitis voluptate nulla quo veniam fuga sit molestias minus.</p>
-                  <p><a href="#" class="btn btn-primary btn-sm rounded">Read my bio</a></p>
+                  <p><a href="about.php" class="btn btn-primary btn-sm rounded">Read my bio</a></p>
                   <p class="social">
                     <a href="#" class="p-2"><span class="fa fa-facebook"></span></a>
                     <a href="#" class="p-2"><span class="fa fa-twitter"></span></a>
@@ -48,7 +48,7 @@
 
                   <li>
                     <a href="post.php?post_id=<?php echo $post_id; ?>">
-                          <img href="post.php?post_id=<?php echo $post_id; ?>" src="images/<?php echo $post_image; ?>" alt="Image placeholder" class="mr-4">
+                          <img href="post.php?post_id=<?php echo $post_id; ?>" src="images/<?php echo $post_image; ?>" alt="Image placeholder" class="mr-4" height="60" width="90">
                       <div class="text">
                         <h4><?php echo $post_title; ?></h4>
                         <div class="post-meta">
@@ -89,7 +89,7 @@
 
                     ?>
 
-                <li><a href="#"><?php echo $category_title ?> <span>(<?php echo $post_count ?>)</span></a></li>
+                <li><a href="category.php?cat_id=<?php echo $category_id ?>"><?php echo $category_title ?> <span>(<?php echo $post_count ?>)</span></a></li>
                 
                 <?php
                   }

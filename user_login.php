@@ -149,22 +149,36 @@ if(isset($_SESSION['user_role'])){
           <div class="row">
             <div class="col-md-9 col-lg-8 mx-auto">
               <h3 class="login-heading mb-4">Welcome back!</h3>
-              <form>
+              <form action="login.php" method="post">
                 <div class="form-label-group">
-                  <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+                  <input type="email" name="user_email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
                   <label for="inputEmail">Email address</label>
                 </div>
 
                 <div class="form-label-group">
-                  <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                  <input type="password" name="user_password" id="inputPassword" class="form-control" placeholder="Password" required>
                   <label for="inputPassword">Password</label>
                 </div>
+                
+                <?php 
+                  
+                  if(isset($_SESSION['login_message_class'])){
+                  if($_SESSION['login_message_class']=='alert alert-danger'){ ?>
+                <div class="alert alert-danger" role="alert">
+                  Invalid Email/Password !
+                </div>
+                <?php 
+              }
+              unset($_SESSION['login_message_class']);
+              
+            }
+              ?>
 
                 <div class="custom-control custom-checkbox mb-3">
                   <input type="checkbox" class="custom-control-input" id="customCheck1">
                   <label class="custom-control-label" for="customCheck1">Remember password</label>
                 </div>
-                <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit">Log In</button>
+                <button name="login" class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit">Log In</button>
                 <div class="text-center">
                   <a class="small" href="#">Forgot password?</a></div>
                 <div class="text-center">

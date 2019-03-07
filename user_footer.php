@@ -41,7 +41,7 @@
                             <h4><?php echo $post_title; ?></h4>
                             <div class="post-meta">
                               <span class="mr-2"><?php echo $post_date; ?> </span> &bullet;
-                              <span class="ml-2"><span class="fa fa-comments"></span><?php echo $post_views; ?></span>
+                              <span class="ml-2"><span class="fa fa-eye"></span><?php echo $post_views; ?></span>
                             </div>
                           </div>
                         </a>
@@ -94,4 +94,4 @@
         </div>
       </footer>
       <!-- END footer -->
-      <div class="wrap">
+      </div>

@@ -18,12 +18,14 @@ if(isset($_SESSION['username'])){
     }
     
     if(isset($_POST['update_profile'])){
+        if(!empty($_POST['user_password']) && !empty($_POST['user_firstname']) && !empty($_POST['user_lastname']) && !empty($_POST['user_email']) && !empty($_POST['user_role'])){
     $username = $_SESSION['username'];
     $user_password = password_hash($_POST['user_password'], PASSWORD_BCRYPT,array('cost' => 10));
     $user_firstname = $_POST['user_firstname'];
     $user_lastname = $_POST['user_lastname'];
     
-    $user_image = $_FILES['user_image']['name'];
+    $user_image = time().uniqid(rand()).$_FILES['user_image']['name'];
+
     $tmp_user_image = $_FILES['user_image']['tmp_name'];
     
     $user_email = $_POST['user_email'];
@@ -45,7 +47,16 @@ if(isset($_SESSION['username'])){
     $create_user = mysqli_query($connection,$query);
     
     confirm_query($create_user);
+    $_SESSION['update_profile_message'] = 'Updated Successfully!';
     }
+    
+    else{
+        $_SESSION['update_profile_message'] = 'Fill all the fields!';
+
+    }
+}
+
+
 }
 
 
@@ -68,7 +79,7 @@ if(isset($_SESSION['username'])){
                     <div class="col-lg-12">
                         <h1 class="page-header">
                             Welcome to the Admin,
-                            <small><?php echo $_SESSION['username']; ?></small>
+                            <small><?php echo $_SESSION['user_firstname']; ?></small>
                         </h1>
                         <ol class="breadcrumb">
                             <li>
@@ -101,7 +112,7 @@ if(isset($_SESSION['username'])){
 
                             <div class="form-group">
                                <label for="user_password"> Password</label>
-                                <input value='<?php echo $user_password; ?>' type="password" class="form-control" name="user_password">
+                                <input placeholder='New Password' value='' type="password" class="form-control" name="user_password">
                             </div>
 
 
@@ -139,6 +150,27 @@ if(isset($_SESSION['username'])){
                             <div class="form-group text-center">
                                 <input type="submit" value="Update Profile" class="btn btn-primary" name="update_profile">
                             </div>
+
+                            <?php 
+                  
+                    if(isset($_SESSION['update_profile_message'])){
+                         if($_SESSION['update_profile_message']=='Fill all the fields!'){ ?>
+                            <div class="alert alert-danger" role="alert">
+                                Fill all the fields!
+                            </div>
+                        <?php 
+                        }
+                        else if($_SESSION['update_profile_message']=='Updated Successfully!'){
+                           ?> <div class="alert alert-success" role="alert">
+                                Updated Successfully!
+                            </div> <?php
+                        }
+                    unset($_SESSION['update_profile_message']);
+              
+                    }
+                     ?>
+
+
                             </div>
                         </form>
                         

@@ -82,7 +82,7 @@
                   <a class="<?php echo $home_class; ?>" href="index.php">Home</a>
                 </li>
                 <li class="nav-item">
-                  <a class="<?php echo $freeebook_class; ?>" href="#">Free E-Book</a>
+                  <a class="<?php echo $freeebook_class; ?>" href="free_ebook.php">Free E-Book</a>
                 </li>
                 
                 <li class="nav-item">

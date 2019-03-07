@@ -11,19 +11,20 @@ if(isset($_GET['update'])){
         $post_category_id = $row['post_category_id'];
         $post_status = $row['post_status'];
         $post_image = $row['post_image'];
-        $post_tags = $row['post_tags'];
         $post_date = $row['post_date'];
         $post_content = $row['post_content'];
+        
         }
 
         if(isset($_POST['update_post'])){
         $post_title = $_POST['title'];
+        $post_title = mysqli_real_escape_string($connection, $post_title);
         $post_category_id = $_POST['post_category_id'];
         $post_status = $_POST['post_status'];
         $post_image = $_FILES['post_image']['name'];
         $tmp_post_image = $_FILES['post_image']['tmp_name'];
-        $post_tags = $_POST['post_tags'];
         $post_content = $_POST['post_content'];
+        $post_content = mysqli_real_escape_string($connection, $post_content);
     
         move_uploaded_file($tmp_post_image, "../images/$post_image");
         
@@ -37,7 +38,7 @@ if(isset($_GET['update'])){
             }
         }
     
-        $query = "UPDATE posts SET post_title ='{$post_title}', post_category_id ='{$post_category_id}', post_status = '{$post_status}', post_image = '{$post_image}', post_tags = '{$post_tags}', post_content= '{$post_content}', post_date = now() WHERE post_id = $update_id ";
+        $query = "UPDATE posts SET post_title ='{$post_title}', post_category_id ='{$post_category_id}', post_status = '{$post_status}', post_image = '{$post_image}', post_content= '{$post_content}', post_date = now() WHERE post_id = $update_id ";
         
         $update_posts = mysqli_query($connection, $query);
         confirm_query($update_posts);
@@ -108,10 +109,7 @@ if(isset($_GET['update'])){
         <input type="file" name="post_image">
     </div>
     
-    <div class="form-group">
-       <label for="post_tags">Post Tags</label>
-        <input value="<?php echo $post_tags; ?>" type="text" class="form-control" name="post_tags">
-    </div>
+    
     
     <div class="form-group">
        <label for="post_content">Post Content</label>
